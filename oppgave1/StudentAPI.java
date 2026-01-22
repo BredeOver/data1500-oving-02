@@ -102,10 +102,13 @@ public class StudentAPI {
     
     private static void handleStudentsRequest(HttpExchange exchange) throws IOException {
         // Hent alle studenter
-        StringBuilder json = new StringBuilder("[");
+        StringBuilder json = new StringBuilder();
+        json.append("[");
         boolean first = true;
         for (Student student : students.values()) {
-            if (!first) json.append(",");
+            if (!first){
+                json.append(",");
+            }
             json.append(student.toJSON());
             first = false;
         }
